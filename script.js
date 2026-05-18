@@ -66,12 +66,10 @@ function borrarUltimo() {
 }
 
 function limpiarPantalla() {
-    primerNumero = "";
-    operador = "";
-    segundoNumero = "";
-    operacionActual = "";
-    calculoCompletado = false;
-    actualizarDisplay();
+    // Al limpiar la pantalla, redirigimos a index.php por método GET
+    // Esto elimina los datos POST de la memoria de PHP y limpia la URL,
+    // garantizando un reinicio absoluto del splash screen y la calculadora.
+    window.location.href = 'index.php';
 }
 
 function calcular() {
