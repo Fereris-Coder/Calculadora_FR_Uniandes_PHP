@@ -1,0 +1,280 @@
+/* ==========================================================================
+   MÓDULO DE ESTILOS: style.css (Diseño Pixel Art & CSS Grid)
+   ========================================================================== */
+
+/* 1. CONFIGURACIÓN BASE Y VARIABLES DE IDENTIDAD (Mobile First) */
+body {
+    font-family: 'Courier New', Courier, monospace; /* Tipografía monoespaciada retro */
+    font-size: 16px; /* Unidad base 1fr = 16px */
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
+    /* Degradado radial central: luz blanca en el centro hacia naranja vibrante en los bordes */
+    background: radial-gradient(circle, #ffffff 0%, #ff7f27 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Contenedor maestro para agrupar secciones */
+.contenedor-maestro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    gap: 20px;
+}
+
+/* ==========================================================================
+   2. ESTÉTICA DEL ENCABEZADO Y BIOGRAFÍA
+   ========================================================================== */
+
+/* Contenedor principal del Header Pixel Art */
+.header-pixel {
+    background-color: #ff7f27; /* Naranja vibrante base */
+    border: 3px solid #000000; /* Borde sólido negro estilo pixel de 3px */
+    padding: 20px;
+    color: #ffffff;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 6px 6px 0px #000000; /* Sombra sólida retro */
+}
+
+.contenedor-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    background-color: #ffffff;
+    border: 3px solid #000000;
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    min-height: 80px;
+    max-width: 80px;
+    max-height: 80px;
+    box-shadow: 3px 3px 0px #000000;
+    overflow: hidden; /* Mantiene el borde pixel art intacto y recorta la imagen */
+    display: block; /* Evita que flexbox expanda el contenedor con imágenes grandes */
+    margin: 0 auto 10px auto; /* Centrado perfecto sobre el título */
+}
+
+.avatar img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover; /* Ajusta la foto sin deformar su proporción */
+    display: block;
+}
+
+.header-pixel h1 {
+    font-size: 2.2rem;
+    margin: 0;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0px #000000; /* Sombra de texto retro */
+    line-height: 1.2;
+}
+
+.subtitulo {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+/* Contenedor de la descripción personal */
+.descripcion-contenedor {
+    background-color: #d3d3d3; /* Gris ligero secundario */
+    border: 3px solid #000000; /* Borde pixelado de 3px */
+    color: #000000;            /* Texto negro contrastante */
+    padding: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    box-shadow: 6px 6px 0px #000000;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.descripcion-contenedor p {
+    margin: 10px 0;
+}
+
+/* ==========================================================================
+   3. ARQUITECTURA DE LA CALCULADORA (CSS Grid)
+   ========================================================================== */
+
+/* Contenedor principal de la calculadora */
+.calculadora {
+    background-color: #f0f0f0; /* Fondo gris ligero */
+    border: 3px solid #000000; /* Borde sólido negro de 3px */
+    padding: 22px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 8px 8px 0px #000000;
+}
+
+/* Pantalla de visualización */
+.pantalla {
+    background-color: #ffffff;
+    border: 3px solid #000000;
+    padding: 15px 20px;
+    font-size: 2.5rem;
+    text-align: right;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #000000;
+    box-shadow: inset 5px 5px 0px #d3d3d3; /* Sombra interna retro */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* Rejilla de botones (4 columnas x 5 filas) */
+.botones {
+    display: grid;
+    grid-template-columns: repeat(4, 4fr); /* 4 columnas de igual proporción */
+    grid-template-rows: repeat(5, 4fr);    /* 5 filas de igual proporción */
+    gap: 4px;                              /* Separación estricta de 4px */
+}
+
+/* Estilos generales de los botones Pixel Art */
+.botones button {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.6rem;
+    font-weight: bold;
+    border: 3px solid #000000; /* Borde negro de 3px */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 4px 0px #000000; /* Sombra exterior retro */
+    transition: all 0.05s ease-in-out;
+    padding: 15px 0;
+    box-sizing: border-box;
+}
+
+/* Efecto de presionado (Active / Click) */
+.botones button:active {
+    transform: translate(3px, 3px); /* Desplazamiento del botón */
+    box-shadow: 1px 1px 0px #000000; /* Reducción de la sombra al presionar */
+}
+
+/* Colores específicos de botones según manual de identidad */
+.boton-numero {
+    background-color: #d3d3d3; /* Gris ligero */
+    color: #000000;
+}
+.boton-numero:hover {
+    background-color: #e6e6e6;
+}
+
+.boton-operador {
+    background-color: #ff7f27; /* Naranja vibrante */
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000;
+}
+.boton-operador:hover {
+    background-color: #ffa05c;
+}
+
+.boton-c {
+    background-color: #ff3b30; /* Rojo funcional */
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000;
+}
+.boton-c:hover {
+    background-color: #ff645b;
+}
+
+.boton-igual {
+    background-color: #34c759; /* Verde funcional */
+    color: #ffffff;
+    text-shadow: 2px 2px 0px #000000;
+    grid-row: span 2; /* Ocupa 2 filas verticalmente */
+}
+.boton-igual:hover {
+    background-color: #5dd87d;
+}
+
+/* Excepción de rejilla para el botón cero */
+.boton-cero {
+    grid-column: span 2; /* Ocupa 2 columnas horizontalmente */
+}
+
+/* ==========================================================================
+   4. ESTÉTICA DEL FOOTER
+   ========================================================================== */
+.footer-pixel {
+    background-color: #d3d3d3;
+    border: 3px solid #000000;
+    padding: 15px 20px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.95rem;
+    box-shadow: 6px 6px 0px #000000;
+    margin-top: 30px;
+    box-sizing: border-box;
+    color: #000000;
+}
+
+.footer-pixel p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   5. DISEÑO ADAPTATIVO (Media Queries para Escritorio / Pantallas Anchas)
+   ========================================================================== */
+@media (min-width: 850px) {
+    body {
+        padding: 40px;
+        justify-content: center;
+    }
+
+    /* En pantallas grandes, colocamos el perfil y la calculadora lado a lado */
+    .contenedor-maestro {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        max-width: 1100px;
+        gap: 40px;
+    }
+
+    .seccion-perfil {
+        flex: 1;
+        max-width: 500px;
+    }
+
+    .seccion-calculadora {
+        flex: 1;
+        max-width: 450px;
+    }
+
+    .footer-pixel {
+        max-width: 1100px;
+    }
+
+    .pantalla {
+        font-size: 3rem;
+        height: 70px;
+    }
+
+    .botones button {
+        font-size: 1.8rem;
+        padding: 20px 0;
+    }
+}
